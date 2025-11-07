@@ -6,24 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#00796B"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="32dp"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
         android:text="Galeria" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        app:srcCompat="@drawable/luki" />
+        android:src="@drawable/luki" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
 
         <Button
             android:id="@+id/buttonLewo"
@@ -31,15 +35,9 @@
             android:layout_height="wrap_content"
             android:text="PREV" />
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
         <Button
             android:id="@+id/buttonPrawo"
             android:layout_width="100dp"
-            android:layout_marginLeft="210dp"
             android:layout_height="wrap_content"
             android:text="NEXT" />
     </LinearLayout>
@@ -47,40 +45,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:text="Który obraz wyświetlić?" />
 
         <EditText
             android:id="@+id/editTextNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Switch
-            android:id="@+id/switch1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tło niebieskie?" />
+            android:layout_marginLeft="48dp"
+            android:inputType="number" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView3"
+    <Switch
+        android:id="@+id/switch1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Autor: 09876543212345678" />
+        android:text="Tło niebieskie?"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="8dp" />
 
+    <TextView
+        android:id="@+id/textViewAutor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Autor: 01234567890"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:layout_marginTop="16dp" />
 </LinearLayout>

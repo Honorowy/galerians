@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Switch switch1;
     private ImageView imageView;
     int[] obrazy = {R.drawable.luki, R.drawable.kamil, R.drawable.zdjecie1};
+    int aktualnyIndeks = 0;
     int indeks = 0;
 
     @Override
@@ -40,27 +41,30 @@ public class MainActivity extends AppCompatActivity {
         switch1 = findViewById(R.id.switch1);
         imageView = findViewById(R.id.imageView);
 
-        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
 
-                } else {
-
-                }
-            }
-        });
 
         buttonLewo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (aktualnyIndeks > 0){
+                    aktualnyIndeks--;
+                    imageView.setImageResource(obrazy[aktualnyIndeks]);
+                } else {
+                    aktualnyIndeks = 2;
+                    imageView.setImageResource(obrazy[aktualnyIndeks]);
+                }
             }
         });
         buttonPrawo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (aktualnyIndeks < 2){
+                    aktualnyIndeks++;
+                    imageView.setImageResource(obrazy[aktualnyIndeks]);
+                } else {
+                    aktualnyIndeks = 0;
+                    imageView.setImageResource(obrazy[aktualnyIndeks]);
+                }
             }
         });
     }
