@@ -1,15 +1,20 @@
 package com.example.egzamin;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextNumber;
     private Switch switch1;
     private ImageView imageView;
-    int[] obrazy = {R.drawable.luki, R.drawable.kamil, R.drawable.zdjecie1};
+    private LinearLayout main;
+    int[] obrazy = {R.drawable.kot1, R.drawable.kot2, R.drawable.kot3};
     int aktualnyIndeks = 0;
     int indeks = 0;
 
@@ -40,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
         editTextNumber = findViewById(R.id.editTextNumber);
         switch1 = findViewById(R.id.switch1);
         imageView = findViewById(R.id.imageView);
-
-
+        main = findViewById(R.id.main);
 
         buttonLewo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +70,45 @@ public class MainActivity extends AppCompatActivity {
                     aktualnyIndeks = 0;
                     imageView.setImageResource(obrazy[aktualnyIndeks]);
                 }
+            }
+        });
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(@NonNull CompoundButton compoundButton, boolean b) {
+                if (b){
+                    main.setBackgroundColor(Color.parseColor("#2196F3"));
+                } else {
+                    main.setBackgroundColor(Color.parseColor("#00796B"));
+                }
+            }
+        });
+        editTextNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String text = editTextNumber.getText().toString();
+
+                if (!text.isEmpty()) {
+                    int number = Integer.parseInt(text);
+
+                    if (number == 1) {
+                        imageView.setImageResource(obrazy[0]);
+                    } else if (number == 2) {
+                        imageView.setImageResource(obrazy[1]);
+                    } else if (number == 3) {
+                        imageView.setImageResource(obrazy[2]);
+                    }
+                }
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
         });
     }
